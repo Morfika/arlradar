@@ -13,13 +13,36 @@ import { Slide7 } from "@/components/slides/Slide7";
 import { Slide8 } from "@/components/slides/Slide8";
 import { Slide9 } from "@/components/slides/Slide9";
 import { Slide10Demo } from "@/components/slides/Slide10Demo";
+import { SlideWrapUp } from "@/components/slides/SlideWrapUp";
+import { SlideNew1 } from "@/components/slides/SlideNew1";
+import { SlideNew2 } from "@/components/slides/SlideNew2";
+import { SlideNew3 } from "@/components/slides/SlideNew3";
+import { SlideNew4 } from "@/components/slides/SlideNew4";
+import { SlideNew5 } from "@/components/slides/SlideNew5";
+import { SlideNew6 } from "@/components/slides/SlideNew6";
+import { SlideNew7 } from "@/components/slides/SlideNew7";
+import { SlideNew8 } from "@/components/slides/SlideNew8";
+import { SlideNew9 } from "@/components/slides/SlideNew9";
+import { SlideNew10 } from "@/components/slides/SlideNew10";
+import { SlideNew11 } from "@/components/slides/SlideNew11";
+import { SlideNew12 } from "@/components/slides/SlideNew12";
 
 export const Route = createFileRoute("/")({
   component: Deck,
 });
 
-const SLIDES = [Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10Demo];
-const LABELS = ["Hook", "Problema", "Actores", "Value Lab", "Solución", "Costos", "Retorno", "Diferencial", "Cierre", "Demo IA"];
+const SLIDES = [
+  Slide1, Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10Demo,
+  SlideWrapUp,
+  SlideNew1, SlideNew2, SlideNew3, SlideNew4, SlideNew5, SlideNew6,
+  SlideNew7, SlideNew8, SlideNew9, SlideNew10, SlideNew11, SlideNew12,
+];
+const LABELS = [
+  "Hook", "Problema", "Actores", "Value Lab", "Solución", "Costos", "Retorno", "Diferencial", "Cierre", "Demo IA",
+  "Wrap Up",
+  "Identificación", "Desafío", "Buyer Persona", "User Journey", "JTBD", "Value Lab",
+  "Experimento 1", "Experimento 2", "La Solución", "Business Case", "Roadmap", "Conclusiones",
+];
 
 function Deck() {
   const [i, setI] = useState(0);
@@ -32,7 +55,7 @@ function Deck() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [SLIDES.length]);
 
   return (
     <SlideFrame>
@@ -69,7 +92,7 @@ function Deck() {
           ))}
         </div>
         <div className="font-mono text-xs tracking-widest uppercase text-cream/70 px-2 min-w-[90px] text-center">
-          {String(i + 1).padStart(2, "0")} · {LABELS[i]}
+          {String(i > 10 ? i - 10 : i + 1).padStart(2, "0")} · {LABELS[i]}
         </div>
         <button
           onClick={() => setI(p => Math.min(p + 1, SLIDES.length - 1))}
